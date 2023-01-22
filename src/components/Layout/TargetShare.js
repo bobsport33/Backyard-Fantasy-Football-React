@@ -4,15 +4,11 @@ import TargetShareData from "../../store/TargetShareData";
 import LoadingSpinner from "../UI/LoadingSpinner";
 
 const seasons = [];
-const weeks = [];
+let weeks = [];
 const curYear = new Date().getFullYear();
 
 for (let i = 2000; i < curYear; i++) {
     seasons.push(i);
-}
-
-for (let i = 1; i <= 18; i++) {
-    weeks.push(i);
 }
 
 export default function TargetShare() {
@@ -21,10 +17,25 @@ export default function TargetShare() {
     const [week, setWeek] = useState();
 
     const selectYearHandler = (e) => {
+        setTargetShareData(null);
+        setWeek(null);
+
+        weeks = [];
+        let selectedWeeks = 17;
+
+        if (e.target.value > 2020) {
+            selectedWeeks = 18;
+        }
+
+        for (let i = 1; i <= selectedWeeks; i++) {
+            weeks.push(i);
+        }
+
         setYear(e.target.value);
     };
 
     const selectWeekHandler = (e) => {
+        setTargetShareData(null);
         setWeek(e.target.value);
     };
 
@@ -93,20 +104,28 @@ export default function TargetShare() {
                         })}
                     </select>
                 </div>
-                <div className="selectors__dropdown">
-                    <label htmlFor="week">Week:</label>
-                    <select name="week" id="week" onChange={selectWeekHandler}>
-                        <option value="">--Please Select a Week--</option>
-                        {weeks.map((week) => {
-                            return <option value={week}>Week {week}</option>;
-                        })}
-                    </select>
-                </div>
+                {year && (
+                    <div className="selectors__dropdown">
+                        <label htmlFor="week">Week:</label>
+                        <select
+                            name="week"
+                            id="week"
+                            onChange={selectWeekHandler}
+                        >
+                            <option value="">--Please Select a Week--</option>
+                            {weeks.map((week) => {
+                                return (
+                                    <option value={week}>Week {week}</option>
+                                );
+                            })}
+                        </select>
+                    </div>
+                )}
             </form>
 
             {}
             {year && !targetShareData && <LoadingSpinner />}
-            {year && targetShareData && (
+            {!week && year && targetShareData && (
                 <table>
                     <tr className="odd">
                         <th>Player Name</th>
@@ -122,12 +141,42 @@ export default function TargetShare() {
                         } else {
                             style = "odd";
                         }
+
                         return (
                             <tr className={style}>
                                 <td>{data["Player Name"]}</td>
                                 <td>{data["Team"]}</td>
                                 <td>{data["Player Pass Attempt- Season"]}</td>
                                 <td>{data["Team Pass Attmept- Season"]}</td>
+                                <td>{data["Target Share"]}%</td>
+                            </tr>
+                        );
+                    })}
+                </table>
+            )}
+            {week && year && targetShareData && (
+                <table>
+                    <tr className="odd">
+                        <th>Player Name</th>
+                        <th>Team</th>
+                        <th>Player Pass Attempt- Week {week}</th>
+                        <th>Team Pass Attmept- Week {week}</th>
+                        <th>Target Share</th>
+                    </tr>
+                    {targetShareData.map((data, index) => {
+                        let style;
+                        if (index % 2 === 0) {
+                            style = "even";
+                        } else {
+                            style = "odd";
+                        }
+
+                        return (
+                            <tr className={style}>
+                                <td>{data["Player Name"]}</td>
+                                <td>{data["Team"]}</td>
+                                <td>{data["Player-Pass Attempt"]}</td>
+                                <td>{data["Team-Pass Attmept"]}</td>
                                 <td>{data["Target Share"]}%</td>
                             </tr>
                         );

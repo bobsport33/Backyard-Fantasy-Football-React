@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function Footer() {
+    const year = new Date().getFullYear();
+
     return (
         <footer className="footer">
             <ul className="footer_list">
@@ -38,7 +40,7 @@ export default function Footer() {
             </div>
 
             <p className="copyright">
-                ©Copyright Backyard Fantasy-Football 2022
+                ©Copyright Backyard Fantasy-Football {year}
             </p>
         </footer>
     );
