@@ -32,9 +32,9 @@ body {
 }
 
 .header {
-    height: 90vh;
+    height: 80vh;
     background-image: linear-gradient(
-            rgba(197, 153, 99, 0.9),
+            rgba(178, 132, 81, 0.9),
             rgba(255 204 147 / 90%)
         ),
         url(../public/assets/play-1.jpg);
@@ -153,13 +153,16 @@ h3 {
 }
 
 .btn-header {
-    background-color: var(--color-gray-dark);
-    color: var(--color-navy);
+    background-color: var(--color-navy-light);
+    color: var(--color-gray);
     margin-right: 2rem;
+    border: none;
+    transition: color 0.3s background-color 0.3s;
 }
 
 .btn-header:hover {
     background-color: var(--color-gray-dark-2);
+    color: var(--color-navy-light);
 }
 
 .btn-cta {
