@@ -7,6 +7,15 @@
     --color-gray-dark-2: #bbb9b9;
     --color-navy: #032061;
     --color-navy-light: #122f6e;
+
+    --color-green: #02d28f;
+    --color-red: #ea4888;
+    --color-blue: #01a6fc;
+    --color-dark: #181b21;
+    --color-field-green: #008438;
+    --color-light: #a2ada2;
+    --color-purple: #2f3d64;
+    --color-other: rgb(98, 137, 112);
 }
 
 * {
@@ -22,49 +31,17 @@
 
 html {
     box-sizing: border-box;
-    font-size: 65.5%;
+    font-size: 62.5%;
 }
 
 body {
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
-    background-color: var(--color-navy);
-}
-
-.header {
-    height: 80vh;
-    background-image: linear-gradient(
-            rgba(178, 132, 81, 0.9),
-            rgba(255 204 147 / 90%)
-        ),
-        url(../public/assets/play-1.jpg);
-    background-size: cover;
-    background-position: center;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-h1 {
-    color: var(--color-navy);
-    font-family: "Oswald", sans-serif;
-    font-weight: 500;
-    font-size: 6.5rem;
-    padding-left: 6rem;
-    padding-top: 12rem;
 }
 
 h2 {
     font-size: 4rem;
     padding: 5rem;
-}
-
-h3 {
-    font-size: 3.7rem;
-    color: var(--color-navy);
-    padding-left: 6rem;
-    font-weight: 300;
 }
 
 .cta__heading {
@@ -494,4 +471,144 @@ disable hover under 900 px
     margin-bottom: 20px;
     display: flex;
     gap: 20px;
+}
+
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #333;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.football-spinner {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    animation: rotate 2s linear infinite;
+}
+
+.football-spinner div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: bounce 1s ease-in-out infinite;
+    border-bottom-color: transparent;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+.football-spinner {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    animation: rotate 2s linear infinite;
+}
+
+.football-oval {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px/50px;
+    background-color: #fff;
+}
+
+.football-lace {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    width: 20px;
+    height: 10px;
+    border-radius: 10px 10px 0 0;
+    background-color: #fff;
+}
+
+.football-lace-left {
+    left: -10px;
+}
+
+.football-lace-right {
+    right: -10px;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

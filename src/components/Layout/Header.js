@@ -1,19 +1,27 @@
 import React from "react";
-import Button from "../UI/Button";
 
-export default function Header() {
+import classes from "./Header.module.css";
+
+const Header = () => {
     return (
-        <header className="header">
-            <h1>Backyard Fantasy-Football</h1>
-            <h3 className="header__heading3">
-                Data to give your fantasy team the edge!
-            </h3>
-            <div className="header-btns">
-                <Button text="Sign-up Now!" styles="btn-header" />
-                <Button text="Log In" styles="btn-header" />
-                {/* <buttton className="btn btn-header">Sign-up Now!</buttton>
-                <buttton className="btn btn-header">Log In</buttton> */}
+        <header className={classes.header}>
+            <div className={classes.navbar}>
+                <a className={classes["nav-link"]} href="#">
+                    Projections
+                </a>
+                <a className={classes["nav-link"]} href="#">
+                    Rankings
+                </a>
+
+                <a className={classes["nav-link"]} href="#">
+                    About
+                </a>
+                <a className={classes["nav-link"]} href="#">
+                    Contact Us
+                </a>
             </div>
         </header>
     );
-}
+};
+
+export default Header;
