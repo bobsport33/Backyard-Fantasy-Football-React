@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 30px;
+    color: var(--color-dark);
 }
 
 .single-card__heading {
@@ -10,7 +11,7 @@
     line-height: 5rem;
 }
 
-.single-card__description {
+.description {
     font-size: 2.6rem;
     line-height: 3rem;
 }

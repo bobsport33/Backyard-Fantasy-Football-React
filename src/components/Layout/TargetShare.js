@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import TargetShareData from "../../store/TargetShareData";
 import LoadingSpinner from "../UI/LoadingSpinner";
 
+import classes from "./TargetShare.module.css";
+
 const seasons = [];
 let weeks = [];
 const curYear = new Date().getFullYear();
@@ -51,15 +53,15 @@ export default function TargetShare() {
     }, [year, week]);
 
     return (
-        <section className="target-share-data">
-            <h2 className="target_share_heading">
+        <section className={classes.targetShareData}>
+            <h2 className={classes.targetShareHeading}>
                 Analytics lead to Champships
             </h2>
-            <h4 className="target_share_heading__4">
+            <h4 className={classes.targetShareSubheading}>
                 Top 40 Players by Target Share
             </h4>
-            <ul className="target-share-description">
-                <li className="target-share-description__text">
+            <ul className={classes.targetShareDescription}>
+                <li className={classes.targetShareDescriptionText}>
                     What is Target Share? How does it help you determine which
                     players to draft? Or what player is the best to target in a
                     trade? At Backyard Fantasy-Football we do not just crunch
@@ -69,7 +71,7 @@ export default function TargetShare() {
                     without any explation. Here is an example of what Backyard
                     Fantasy-Football can do for you!
                 </li>
-                <li className="target-share-description__li">
+                <li className={classes.targetShareDescriptionText}>
                     <strong>Target Share- </strong>measures the percentage of
                     all passing attempts directed at a particular player. This
                     is a key piece of data for fantasy owners, as it shows the
@@ -77,7 +79,7 @@ export default function TargetShare() {
                     share will generally produce more points that those with a
                     lower percentage.
                 </li>
-                <li className="target-share-description__li">
+                <li className={classes.targetShareDescriptionLi}>
                     <strong>Team Pass Attmept- Season- </strong> Number of pass
                     attempts from a team. Having a player with a high target
                     share is definetly a benefit, however, a player that has a
@@ -85,7 +87,7 @@ export default function TargetShare() {
                     offense makes a significantly larger number of pass attempts
                     per game.
                 </li>
-                <li className="target-share-description__li">
+                <li className={classes.targetShareDescriptionLi}>
                     <strong>Player Pass Attmept- Season- </strong> Number of
                     pass attempts that target the listed players
                 </li>
@@ -126,24 +128,25 @@ export default function TargetShare() {
             {}
             {year && !targetShareData && <LoadingSpinner />}
             {!week && year && targetShareData && (
-                <table>
-                    <tr className="odd">
-                        <th>Player Name</th>
-                        <th>Team</th>
-                        <th>Player Pass Attempt- Season</th>
-                        <th>Team Pass Attmept- Season</th>
-                        <th>Target Share</th>
+                <table className={classes.table}>
+                    <tr className={classes.odd}>
+                        <th className={classes.th}>Player Name</th>
+                        <th className={classes.th}>Team</th>
+                        <th className={classes.th}>
+                            Player Pass Attempt- Season
+                        </th>
+                        <th className={classes.th}>
+                            Team Pass Attmept- Season
+                        </th>
+                        <th className={classes.th}>Target Share</th>
                     </tr>
                     {targetShareData.map((data, index) => {
-                        let style;
-                        if (index % 2 === 0) {
-                            style = "even";
-                        } else {
-                            style = "odd";
-                        }
-
                         return (
-                            <tr className={style}>
+                            <tr
+                                className={
+                                    index % 2 === 0 ? classes.even : classes.odd
+                                }
+                            >
                                 <td>{data["Player Name"]}</td>
                                 <td>{data["Team"]}</td>
                                 <td>{data["Player Pass Attempt- Season"]}</td>
@@ -155,24 +158,25 @@ export default function TargetShare() {
                 </table>
             )}
             {week && year && targetShareData && (
-                <table>
-                    <tr className="odd">
-                        <th>Player Name</th>
-                        <th>Team</th>
-                        <th>Player Pass Attempt- Week {week}</th>
-                        <th>Team Pass Attmept- Week {week}</th>
-                        <th>Target Share</th>
+                <table className={classes.table}>
+                    <tr className={classes.odd}>
+                        <th className={classes.th}>Player Name</th>
+                        <th className={classes.th}>Team</th>
+                        <th className={classes.th}>
+                            Player Pass Attempt- Week {week}
+                        </th>
+                        <th className={classes.th}>
+                            Team Pass Attmept- Week {week}
+                        </th>
+                        <th className={classes.th}>Target Share</th>
                     </tr>
                     {targetShareData.map((data, index) => {
-                        let style;
-                        if (index % 2 === 0) {
-                            style = "even";
-                        } else {
-                            style = "odd";
-                        }
-
                         return (
-                            <tr className={style}>
+                            <tr
+                                className={
+                                    index % 2 === 0 ? classes.even : classes.odd
+                                }
+                            >
                                 <td>{data["Player Name"]}</td>
                                 <td>{data["Team"]}</td>
                                 <td>{data["Player-Pass Attempt"]}</td>

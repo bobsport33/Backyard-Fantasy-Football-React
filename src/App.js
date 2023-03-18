@@ -16,9 +16,8 @@ function App() {
             <Hero />
             <Body>
                 <SingleCard />
-                {/* 
-                <CTA />
-                <TargetShare /> */}
+                {/* <CTA /> */}
+                <TargetShare />
             </Body>
             <Footer />
         </React.Fragment>

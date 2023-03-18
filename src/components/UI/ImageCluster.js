@@ -1,24 +1,25 @@
 import React from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import classes from "./ImageCluster.module.css";
 
 export default function ImageCluster() {
     return (
-        <div className="img_cluster">
+        <div className={classes.img_cluster}>
             <img
                 src="/assets/football-2.jpg"
                 alt="Pablo Sanchez"
-                className="cta__img cta__img-1"
+                className={classes.cta__img}
             />
             <img
                 src="/assets/pablo2.jpg"
                 alt="Football"
-                className="cta__img cta__img-2"
+                className={classes.cta__img}
             />
             <img
                 src="/assets/o-line-2.jpg"
                 alt="Offensive Line"
-                className="cta__img cta__img-3"
+                className={classes.cta__img}
             />
         </div>
     );
