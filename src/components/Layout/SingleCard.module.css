@@ -9,6 +9,8 @@
 .single-card__heading {
     font-size: 4.2rem;
     line-height: 5rem;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .description {

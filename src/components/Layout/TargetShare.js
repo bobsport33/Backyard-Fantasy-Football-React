@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import TargetShareData from "../../store/TargetShareData";
+import DataCard from "../UI/DataCard";
 import LoadingSpinner from "../UI/LoadingSpinner";
-
+import Card from "../UI/Card";
 import classes from "./TargetShare.module.css";
 
 const seasons = [];
@@ -54,44 +55,37 @@ export default function TargetShare() {
 
     return (
         <section className={classes.targetShareData}>
-            <h2 className={classes.targetShareHeading}>
-                Analytics lead to Champships
-            </h2>
-            <h4 className={classes.targetShareSubheading}>
-                Top 40 Players by Target Share
-            </h4>
-            <ul className={classes.targetShareDescription}>
-                <li className={classes.targetShareDescriptionText}>
-                    What is Target Share? How does it help you determine which
-                    players to draft? Or what player is the best to target in a
-                    trade? At Backyard Fantasy-Football we do not just crunch
-                    the numbers, but also explain the purpose of the data. Data
-                    without understanding will not help you succeed, and that is
-                    what a lot of other sites do. They give you tons of data
-                    without any explation. Here is an example of what Backyard
-                    Fantasy-Football can do for you!
-                </li>
-                <li className={classes.targetShareDescriptionText}>
-                    <strong>Target Share- </strong>measures the percentage of
-                    all passing attempts directed at a particular player. This
-                    is a key piece of data for fantasy owners, as it shows the
-                    expected usage of a player. Players with a higher target
-                    share will generally produce more points that those with a
-                    lower percentage.
-                </li>
-                <li className={classes.targetShareDescriptionLi}>
-                    <strong>Team Pass Attmept- Season- </strong> Number of pass
-                    attempts from a team. Having a player with a high target
-                    share is definetly a benefit, however, a player that has a
-                    slightly lower target share may be more vaulable if their
-                    offense makes a significantly larger number of pass attempts
-                    per game.
-                </li>
-                <li className={classes.targetShareDescriptionLi}>
-                    <strong>Player Pass Attmept- Season- </strong> Number of
-                    pass attempts that target the listed players
-                </li>
-            </ul>
+            <Card>
+                <h2 className={classes.targetShareHeading}>
+                    Using Data to get an edge
+                </h2>
+                <p className={classes.targetShareSubheading}>
+                    Take a look at how anaylzing target share can help you
+                    compare players
+                </p>
+                <div className={classes.targetShareDescription}>
+                    <li className={classes.targetShareDescriptionText}>
+                        <strong>Target Share- </strong>measures the percentage
+                        of all passing attempts directed at a particular player.
+                        This is a key piece of data for fantasy owners, as it
+                        shows the expected usage of a player. Players with a
+                        higher target share will generally produce more points
+                        that those with a lower percentage.
+                    </li>
+                    <li className={classes.targetShareDescriptionLi}>
+                        <strong>Team Pass Attmept- Season- </strong> Number of
+                        pass attempts from a team. Having a player with a high
+                        target share is definetly a benefit, however, a player
+                        that has a slightly lower target share may be more
+                        vaulable if their offense makes a significantly larger
+                        number of pass attempts per game.
+                    </li>
+                    <li className={classes.targetShareDescriptionLi}>
+                        <strong>Player Pass Attmept- Season- </strong> Number of
+                        pass attempts that target the listed players
+                    </li>
+                </div>
+            </Card>
             <form className="selectors">
                 <div className="selectors__dropdown">
                     <label htmlFor="season">Season:</label>
@@ -128,64 +122,41 @@ export default function TargetShare() {
             {}
             {year && !targetShareData && <LoadingSpinner />}
             {!week && year && targetShareData && (
-                <table className={classes.table}>
-                    <tr className={classes.odd}>
-                        <th className={classes.th}>Player Name</th>
-                        <th className={classes.th}>Team</th>
-                        <th className={classes.th}>
-                            Player Pass Attempt- Season
-                        </th>
-                        <th className={classes.th}>
-                            Team Pass Attmept- Season
-                        </th>
-                        <th className={classes.th}>Target Share</th>
-                    </tr>
+                <div className={classes.data}>
                     {targetShareData.map((data, index) => {
+                        console.log(data);
                         return (
-                            <tr
-                                className={
-                                    index % 2 === 0 ? classes.even : classes.odd
+                            <DataCard
+                                name={data["Player Name"]}
+                                team={data["Team"]}
+                                playerPassAtt={
+                                    data["Player Pass Attempt- Season"]
                                 }
-                            >
-                                <td>{data["Player Name"]}</td>
-                                <td>{data["Team"]}</td>
-                                <td>{data["Player Pass Attempt- Season"]}</td>
-                                <td>{data["Team Pass Attmept- Season"]}</td>
-                                <td>{data["Target Share"]}%</td>
-                            </tr>
+                                teamPassAtt={data["Team Pass Attmept- Season"]}
+                                targetShare={data["Target Share"]}
+                                ranking={index + 1}
+                                season=" - Season"
+                            />
                         );
                     })}
-                </table>
+                </div>
             )}
             {week && year && targetShareData && (
-                <table className={classes.table}>
-                    <tr className={classes.odd}>
-                        <th className={classes.th}>Player Name</th>
-                        <th className={classes.th}>Team</th>
-                        <th className={classes.th}>
-                            Player Pass Attempt- Week {week}
-                        </th>
-                        <th className={classes.th}>
-                            Team Pass Attmept- Week {week}
-                        </th>
-                        <th className={classes.th}>Target Share</th>
-                    </tr>
+                <div className={classes.data}>
                     {targetShareData.map((data, index) => {
+                        console.log(data);
                         return (
-                            <tr
-                                className={
-                                    index % 2 === 0 ? classes.even : classes.odd
-                                }
-                            >
-                                <td>{data["Player Name"]}</td>
-                                <td>{data["Team"]}</td>
-                                <td>{data["Player-Pass Attempt"]}</td>
-                                <td>{data["Team-Pass Attmept"]}</td>
-                                <td>{data["Target Share"]}%</td>
-                            </tr>
+                            <DataCard
+                                name={data["Player Name"]}
+                                team={data["Team"]}
+                                playerPassAtt={data["Player-Pass Attempt"]}
+                                teamPassAtt={data["Team-Pass Attmept"]}
+                                targetShare={data["Target Share"]}
+                                ranking={index + 1}
+                            />
                         );
                     })}
-                </table>
+                </div>
             )}
         </section>
     );
