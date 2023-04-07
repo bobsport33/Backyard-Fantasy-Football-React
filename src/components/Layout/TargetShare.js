@@ -4,7 +4,65 @@ import TargetShareData from "../../store/TargetShareData";
 import DataCard from "../UI/DataCard";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Card from "../UI/Card";
-import classes from "./TargetShare.module.css";
+import styled from "styled-components";
+import InfoCard from "../UI/InfoCard";
+
+const TargerShareCont = styled.section`
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.6rem;
+    color: var(--color-light);
+    margin-bottom: 5rem;
+
+    .targetShareHeading {
+        color: var(--color-dark);
+        text-transform: uppercase;
+        margin-top: 3rem;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .targetShareSubheading {
+        color: var(--color-dark);
+        font-size: 2.5rem;
+        padding-bottom: 3rem;
+    }
+
+    .targetShareDescription {
+        margin: 0 auto 2rem auto;
+        width: 70%;
+        color: var(--color-light);
+        padding-bottom: 3rem;
+        list-style: none;
+        text-align: left;
+        line-height: 1.4;
+    }
+
+    .target-share__container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .targetShareDescriptionText {
+        padding-bottom: 2rem;
+    }
+
+    .targetShareDescriptionLi {
+        padding-top: 1rem;
+    }
+
+    .selectors {
+        margin-top: 80px;
+    }
+
+    .data {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+`;
 
 const seasons = [];
 let weeks = [];
@@ -54,36 +112,34 @@ export default function TargetShare() {
     }, [year, week]);
 
     return (
-        <section className={classes.targetShareData}>
+        <TargerShareCont>
             <Card>
-                <h2 className={classes.targetShareHeading}>
+                <h2 className={"targetShareHeading"}>
                     Using Data to get an edge
                 </h2>
-                <p className={classes.targetShareSubheading}>
-                    Take a look at how anaylzing target share can help you
-                    compare players
+                <p className={"targetShareSubheading"}>
+                    Take a look at these different metrics and learn how they
+                    can give you an edge in selecting players.
                 </p>
-                <div className={classes.targetShareDescription}>
-                    <li className={classes.targetShareDescriptionText}>
-                        <strong>Target Share- </strong>measures the percentage
+                <div className={"target-share__container"}>
+                    <InfoCard
+                        title="Target Share Percentage"
+                        description="Measurement of the percentage
                         of all passing attempts directed at a particular player.
-                        This is a key piece of data for fantasy owners, as it
-                        shows the expected usage of a player. Players with a
-                        higher target share will generally produce more points
-                        that those with a lower percentage.
-                    </li>
-                    <li className={classes.targetShareDescriptionLi}>
-                        <strong>Team Pass Attmept- Season- </strong> Number of
-                        pass attempts from a team. Having a player with a high
-                        target share is definetly a benefit, however, a player
+                         "
+                    />
+                    <InfoCard
+                        title="Team Pass Attempts"
+                        description="Number of total pass attempts for a team. A player
                         that has a slightly lower target share may be more
                         vaulable if their offense makes a significantly larger
-                        number of pass attempts per game.
-                    </li>
-                    <li className={classes.targetShareDescriptionLi}>
-                        <strong>Player Pass Attmept- Season- </strong> Number of
-                        pass attempts that target the listed players
-                    </li>
+                        number of pass attempts per game."
+                    />
+                    <InfoCard
+                        title="Player Pass Attempts"
+                        description="Total number of pass attempts targeting the selected player. Target share percentage is great for comparing players, but this is the best for predicting expected fantasy points.
+                         "
+                    />
                 </div>
             </Card>
             <form className="selectors">
@@ -122,7 +178,7 @@ export default function TargetShare() {
             {}
             {year && !targetShareData && <LoadingSpinner />}
             {!week && year && targetShareData && (
-                <div className={classes.data}>
+                <div className={"data"}>
                     {targetShareData.map((data, index) => {
                         console.log(data);
                         return (
@@ -142,7 +198,7 @@ export default function TargetShare() {
                 </div>
             )}
             {week && year && targetShareData && (
-                <div className={classes.data}>
+                <div className={"data"}>
                     {targetShareData.map((data, index) => {
                         console.log(data);
                         return (
@@ -158,6 +214,6 @@ export default function TargetShare() {
                     })}
                 </div>
             )}
-        </section>
+        </TargerShareCont>
     );
 }

@@ -1,26 +1,49 @@
 import React from "react";
+import styled from "styled-components";
 
-import classes from "./Header.module.css";
+const HeaderCont = styled.header`
+    height: 100px;
+    z-index: 100;
+    position: relative;
+    background-color: rgba(13, 24, 17, 1);
 
+    .navbar {
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        font-size: 2.4rem;
+        color: var(--color-light);
+    }
+
+    .logo {
+        width: 200px;
+        margin-top: 15px;
+    }
+`;
 const Header = () => {
     return (
-        <header className={classes.header}>
-            <div className={classes.navbar}>
-                <a className={classes["nav-link"]} href="#">
+        <HeaderCont>
+            <div className={"navbar"}>
+                <a className={"nav-link"} href="/">
                     Projections
                 </a>
-                <a className={classes["nav-link"]} href="#">
+                <a className={"nav-link"} href="/">
                     Rankings
                 </a>
 
-                <a className={classes["nav-link"]} href="#">
+                <a className={"nav-link"} href="/">
                     About
                 </a>
-                <a className={classes["nav-link"]} href="#">
+                <a className={"nav-link"} href="/">
                     Contact Us
                 </a>
             </div>
-        </header>
+        </HeaderCont>
     );
 };
 

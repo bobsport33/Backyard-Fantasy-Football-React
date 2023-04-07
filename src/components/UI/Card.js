@@ -1,10 +1,20 @@
 import React from "react";
-import classes from "./Card.module.css";
+import styled from "styled-components";
 
-const Card = ({ children, className }) => {
-    return (
-        <div className={[classes.card, className].join(" ")}>{children}</div>
-    );
+const CardCont = styled.div`
+    width: 90%;
+    margin: auto;
+    padding: 40px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+`;
+
+const Card = ({ children }) => {
+    return <CardCont>{children}</CardCont>;
 };
 
 export default Card;
