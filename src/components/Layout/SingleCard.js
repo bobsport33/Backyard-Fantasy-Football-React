@@ -28,6 +28,7 @@ const SingleCardCont = styled.div`
         line-height: 5rem;
         text-transform: uppercase;
         font-weight: 600;
+        text-align: center;
     }
 
     .single-card__description {
@@ -41,11 +42,18 @@ const SingleCard = () => {
         <Card>
             <SingleCardCont>
                 <h2 className={"single-card__heading"}>
-                    Why Choose Backyard Fantasy Football?
+                    Why Fantasy Football Players Need to Embrace Data Analytics
                 </h2>
                 <div className="single-card__container">
                     <div className="single-card__text-container">
-                        <p className={"single-card__description"}>
+                        <p className="single-card__description">
+                            Data analytics can give your fantasy football team
+                            the edge you need to win. By identifying players
+                            with upside and potential based on numbers, you can
+                            make informed decisions and gain an advantage over
+                            your opponents.
+                        </p>
+                        {/* <p className={"single-card__description"}>
                             What wins fantasy football championships? Grit?
                             Luck? Mind-games with your league opponents?
                             Unfortunately, most of these skills have no factor
@@ -58,7 +66,7 @@ const SingleCard = () => {
                             you! With the advantages you gain from picking the
                             players with our analytics, your team will have the
                             edge you need to win!
-                        </p>
+                        </p> */}
                     </div>
                     <ImageCluster />
                 </div>

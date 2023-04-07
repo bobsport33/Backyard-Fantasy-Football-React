@@ -22,7 +22,6 @@ const ClusterCont = styled.div`
 
     .cta__img:nth-child(1) {
         z-index: 8;
-
         transform: translateY(50%);
     }
     .cta__img:nth-child(2) {

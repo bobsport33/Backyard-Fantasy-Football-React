@@ -55,6 +55,21 @@ const TargerShareCont = styled.section`
 
     .selectors {
         margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    .selectors__dropdown {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .selectors__label {
+        font-size: 2.5rem;
     }
 
     .data {
@@ -143,8 +158,13 @@ export default function TargetShare() {
                 </div>
             </Card>
             <form className="selectors">
+                <h2 className="selectors__heading">
+                    Check out this historical Target Share data.
+                </h2>
                 <div className="selectors__dropdown">
-                    <label htmlFor="season">Season:</label>
+                    <label className="selectors__label" htmlFor="season">
+                        Season:
+                    </label>
                     <select
                         name="season"
                         id="season"
@@ -158,7 +178,9 @@ export default function TargetShare() {
                 </div>
                 {year && (
                     <div className="selectors__dropdown">
-                        <label htmlFor="week">Week:</label>
+                        <label className="selectors__label" htmlFor="week">
+                            Week:
+                        </label>
                         <select
                             name="week"
                             id="week"
