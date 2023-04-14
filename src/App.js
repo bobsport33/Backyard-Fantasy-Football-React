@@ -16,7 +16,6 @@ function App() {
             <Hero />
             <Body>
                 <SingleCard />
-
                 <TargetShare />
             </Body>
             <Footer />

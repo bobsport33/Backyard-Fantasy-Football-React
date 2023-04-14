@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { media } from "../../styles/variables";
 
 const CardCont = styled.div`
     width: 90%;
@@ -11,6 +12,12 @@ const CardCont = styled.div`
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    max-width: 1285px;
+    margin: 0 auto;
+
+    @media ${media.mobile} {
+        padding: 20px;
+    }
 `;
 
 const Card = ({ children }) => {

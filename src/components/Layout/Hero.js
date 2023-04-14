@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { media } from "../../styles/variables";
 
 const HeroCont = styled.div`
     width: 100%;
@@ -17,6 +18,15 @@ const HeroCont = styled.div`
         font-size: 9.5rem;
         -webkit-text-stroke: 1px #fff;
         margin-bottom: 20px;
+        text-align: center;
+
+        @media ${media.tablet} {
+            font-size: 7rem;
+        }
+
+        @media ${media.mobile} {
+            font-size: 4.5rem;
+        }
     }
 `;
 

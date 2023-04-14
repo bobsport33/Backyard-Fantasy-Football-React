@@ -1,12 +1,5 @@
-const Colors = {
-    primary: "rgb(197, 153, 99)",
-    primaryDark: "rgb(178, 132, 81)",
-    primaryLight: "#e2cdb3",
-    gray: "#ededed",
-    grayDark: "#cfcdcd",
-    grayDark2: " #bbb9b9",
-    navy: "#032061",
-    navyLight: "#122f6e",
+export const media = {
+    desktop: "(min-width: 1101px)",
+    tablet: "(max-width: 1100px)",
+    mobile: "(max-width: 500px)",
 };
-
-export default Colors;

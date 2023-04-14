@@ -1,11 +1,22 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { media } from "../../styles/variables";
 
 const DataCardCont = styled.div`
     display: flex;
     gap: 20px;
     justify-content: space-between;
     font-size: 2rem;
+    max-width: 800px;
+
+    @media ${media.tablet} {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 550px) {
+        flex-direction: column;
+    }
 
     ${({ color }) => {
         if (color === "blue") {
@@ -64,6 +75,16 @@ const DataCardCont = styled.div`
         align-items: flex-start;
     }
 
+    .dataCard__text-container {
+        display: flex;
+        gap: 20px;
+
+        @media (max-width: 775px) {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+
     .dataCard__ranking--rank {
         padding-left: 8px;
         padding-right: 17px;
@@ -71,12 +92,20 @@ const DataCardCont = styled.div`
 
     .dataCard__info {
         padding-left: 8px;
+        font-size: 2rem;
+
+        @media ${media.mobile} {
+            font-size: 1.6rem;
+        }
     }
 
     .dataCard__targetShare {
         color: var(--color-gray);
         padding: 0 4px;
         font-weight: 700;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .dataCard__targetShare--stat {
@@ -98,20 +127,22 @@ const DataCard = ({
 
     return (
         <DataCardCont color={color}>
-            <div className={"dataCard__textCol"}>
-                <div className={"dataCard__ranking"}>
-                    <p className="dataCard__ranking--rank">#{ranking}</p>
+            <div className="dataCard__text-container">
+                <div className={"dataCard__textCol"}>
+                    <div className={"dataCard__ranking"}>
+                        <p className="dataCard__ranking--rank">#{ranking}</p>
+                    </div>
+                    <p className={"dataCard__info"}>Player Name: {name}</p>
+                    <p className={"dataCard__info"}>Team: {team}</p>
                 </div>
-                <p className={"dataCard__info"}>Player Name: {name}</p>
-                <p className={"dataCard__info"}>Team: {team}</p>
-            </div>
-            <div className={"dataCard__textCol"}>
-                <p className={"dataCard__info"}>
-                    Player Pass Attempt{season}: {playerPassAtt}
-                </p>
-                <p className={"dataCard__info"}>
-                    Team Pass Attmept{season}: {teamPassAtt}
-                </p>
+                <div className={"dataCard__textCol"}>
+                    <p className={"dataCard__info"}>
+                        Player Pass Attempt{season}: {playerPassAtt}
+                    </p>
+                    <p className={"dataCard__info"}>
+                        Team Pass Attmept{season}: {teamPassAtt}
+                    </p>
+                </div>
             </div>
             <div className={"dataCard__targetShare"}>
                 <div className="dataCard__targetShare--stat">

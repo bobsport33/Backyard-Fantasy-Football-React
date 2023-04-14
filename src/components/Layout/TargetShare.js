@@ -6,6 +6,7 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 import Card from "../UI/Card";
 import styled from "styled-components";
 import InfoCard from "../UI/InfoCard";
+import { media } from "../../styles/variables";
 
 const TargerShareCont = styled.section`
     text-align: center;
@@ -14,7 +15,6 @@ const TargerShareCont = styled.section`
     align-items: center;
     font-size: 1.6rem;
     color: var(--color-light);
-    margin-bottom: 5rem;
 
     .targetShareHeading {
         color: var(--color-dark);
@@ -42,7 +42,13 @@ const TargerShareCont = styled.section`
 
     .target-share__container {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        @media ${media.tablet} {
+            flex-direction: column;
+        }
     }
 
     .targetShareDescriptionText {
@@ -60,6 +66,8 @@ const TargerShareCont = styled.section`
         gap: 20px;
         align-items: center;
         margin-bottom: 40px;
+        max-width: 90%;
+        margin: 80px auto;
     }
 
     .selectors__dropdown {
@@ -76,6 +84,8 @@ const TargerShareCont = styled.section`
         display: flex;
         flex-direction: column;
         gap: 20px;
+        width: 90%;
+        margin: 0 auto;
     }
 `;
 
@@ -171,8 +181,12 @@ export default function TargetShare() {
                         onChange={selectYearHandler}
                     >
                         <option value="">--Please Select a Year--</option>
-                        {seasons.map((season) => {
-                            return <option value={season}>{season}</option>;
+                        {seasons.map((season, i) => {
+                            return (
+                                <option key={i} value={season}>
+                                    {season}
+                                </option>
+                            );
                         })}
                     </select>
                 </div>
@@ -187,9 +201,11 @@ export default function TargetShare() {
                             onChange={selectWeekHandler}
                         >
                             <option value="">--Please Select a Week--</option>
-                            {weeks.map((week) => {
+                            {weeks.map((week, i) => {
                                 return (
-                                    <option value={week}>Week {week}</option>
+                                    <option key={i} value={week}>
+                                        Week {week}
+                                    </option>
                                 );
                             })}
                         </select>
@@ -202,9 +218,9 @@ export default function TargetShare() {
             {!week && year && targetShareData && (
                 <div className={"data"}>
                     {targetShareData.map((data, index) => {
-                        console.log(data);
                         return (
                             <DataCard
+                                key={index}
                                 name={data["Player Name"]}
                                 team={data["Team"]}
                                 playerPassAtt={
@@ -222,9 +238,9 @@ export default function TargetShare() {
             {week && year && targetShareData && (
                 <div className={"data"}>
                     {targetShareData.map((data, index) => {
-                        console.log(data);
                         return (
                             <DataCard
+                                key={index}
                                 name={data["Player Name"]}
                                 team={data["Team"]}
                                 playerPassAtt={data["Player-Pass Attempt"]}

@@ -1,26 +1,51 @@
 import React from "react";
 import Card from "../UI/Card";
 import styled from "styled-components";
-import ImageCluster from "../UI/ImageCluster";
+import { media } from "../../styles/variables";
 
 const SingleCardCont = styled.div`
     display: flex;
     flex-direction: column;
+
     align-items: center;
-    gap: 30px;
+    gap: 50px;
     color: var(--color-dark);
+
+    @media ${media.tablet} {
+        gap: 30px;
+    }
+
+    @media ${media.mobile} {
+        gap: 20px;
+    }
 
     .single-card__container {
         display: flex;
         flex-direction: row;
-        gap: 30px;
+        gap: 50px;
+        justify-content: space-evenly;
+
+        @media ${media.tablet} {
+            gap: 20px;
+        }
+
+        @media (max-width: 750px) {
+            gap: 30px;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     .single-card__text-container {
         display: flex;
         flex-direction: column;
         gap: 20px;
-        width: 55%;
+        width: 45%;
+        justify-content: center;
+
+        @media (max-width: 750px) {
+            width: 100%;
+        }
     }
 
     .single-card__heading {
@@ -29,11 +54,50 @@ const SingleCardCont = styled.div`
         text-transform: uppercase;
         font-weight: 600;
         text-align: center;
+
+        @media ${media.tablet} {
+            font-size: 3.6rem;
+            line-height: 4rem;
+        }
+
+        @media ${media.mobile} {
+            font-size: 3rem;
+        }
     }
 
     .single-card__description {
         font-size: 2.6rem;
         line-height: 3rem;
+
+        @media ${media.tablet} {
+            font-size: 2.2rem;
+        }
+
+        @media ${media.mobile} {
+            font-size: 2rem;
+            text-align: center;
+        }
+    }
+
+    .single-card__image {
+        width: 40%;
+        min-width: 350px;
+        border: 4px solid var(--color-gray);
+        object-fit: cover;
+        transition: all 0.2s;
+
+        &:hover {
+            transform: scale(1.1);
+
+            @media ${media.tablet} {
+                transform: scale(1);
+            }
+        }
+
+        @media ${media.mobile} {
+            min-width: unset;
+            width: 100%;
+        }
     }
 `;
 
@@ -68,7 +132,11 @@ const SingleCard = () => {
                             edge you need to win!
                         </p> */}
                     </div>
-                    <ImageCluster />
+                    <img
+                        src="/assets/football-2.jpg"
+                        alt="Pablo Sanchez"
+                        className={"single-card__image"}
+                    />
                 </div>
             </SingleCardCont>
         </Card>
