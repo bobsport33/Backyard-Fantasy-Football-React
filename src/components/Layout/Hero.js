@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../UI/Button";
 
 const HeroCont = styled.div`
     width: 100%;

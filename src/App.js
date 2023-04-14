@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./components/Layout/Header";
 
 import Hero from "./components/Layout/Hero";
-import CTA from "./components/Layout/CTA";
+
 import Body from "./components/Layout/Body";
 import TargetShare from "./components/Layout/TargetShare";
 import Footer from "./components/Layout/Footer";
@@ -16,7 +16,7 @@ function App() {
             <Hero />
             <Body>
                 <SingleCard />
-                {/* <CTA /> */}
+
                 <TargetShare />
             </Body>
             <Footer />
