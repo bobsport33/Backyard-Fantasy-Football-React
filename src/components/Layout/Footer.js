@@ -1,6 +1,6 @@
 import React from "react";
-
 import styled from "styled-components";
+import { media } from "../../styles/variables";
 
 const FooterCont = styled.footer`
     text-align: center;
@@ -19,6 +19,19 @@ const FooterCont = styled.footer`
         display: flex;
         justify-content: center;
         margin-bottom: 4rem;
+
+        @media screen and (max-width: 780px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 30px;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        @media ${media.mobile} {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .footer_list__item {
