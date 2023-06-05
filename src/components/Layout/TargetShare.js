@@ -83,6 +83,7 @@ const TargerShareCont = styled.section`
     .data {
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 20px;
         width: 90%;
         margin: 0 auto;

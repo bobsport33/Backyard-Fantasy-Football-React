@@ -4,7 +4,8 @@ import { media } from "../../styles/variables";
 
 const DataCardCont = styled.div`
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    width: 75%;
     justify-content: space-between;
     font-size: 2rem;
     max-width: 800px;
